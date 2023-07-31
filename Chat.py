@@ -1,6 +1,8 @@
 import asyncio
 import json
 import sys
+import time
+import subprocess
 
 try:
     import websockets
@@ -83,10 +85,20 @@ async def print_response_stream(user_input, history):
         print(cur_message, end='')
         sys.stdout.flush()  # If we don't flush, we won't see tokens in realtime.
 
+def json_saving(new_data):
+    with open("memory/general_memory.jsonl", "a") as file:
+        file.write("\n" + new_data)
 
-while __name__ == '__main__':
-    user_input = str(input("\nYou: "))
+def input_user(checked_information = ""):
+    global user_input
+    user_input = str("\nYou: " + checked_information)
 
+    seconds = time.time()
+    local_time = time.ctime(seconds)
+
+    testing = [local_time, user_input]
+
+    json_saving(str(testing))
     # Basic example
     history = {'internal': [], 'visible': []}
 
@@ -95,3 +107,12 @@ while __name__ == '__main__':
     # history = {'internal': [arr], 'visible': [arr]}
 
     asyncio.run(print_response_stream(user_input, history))
+
+if len(sys.argv) > 1:
+    information = sys.argv[1]
+    input_user(information)
+else:
+    print("What have you done?")
+
+
+
