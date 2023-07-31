@@ -1,4 +1,4 @@
-  # **AI Assistance**
+  # **AI Assistant**
 
 As of now this is an extremely early version of this AI assistance. I plan to add a variety of different features to this. Do note that I am still a student and I'm still learning programming so don't have high expectations. This is just a personal projects that I'm choosing to post online, any feedback will be greatly appreciated!
 
