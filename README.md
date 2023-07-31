@@ -12,6 +12,15 @@ As of now this is an extremely early version of this AI assistance. I plan to ad
   The short term memory works in very similiar way as the long term one except instead of a sentence transofer model running and checking every single past                converstaion, the AI is given your entire chat history in the prompt with a limit of 4000 characters, the AI itself will have to read your converstaion and find the     best answer. This limit could be increased depening on the model you use but I can not test how well that would work as I do not have a good graphics card.
 
 
+## **Future Features:**
+  - Discord or other communication service integration
+  - Stable Diffusion or other image generation integration
+  - Voice Communication
+  - Ability to search the internet
+  - Google Calendar or alternative calendar software integration
+  - More things that I will come up with in the future.
+
+
   ## **Installation:**
 Note: As of the Version 0.1 the installation program is not created yet, so all the installations will have to be done manually and all the models and settings need to be modified manually. This will be different in future versions.
 
