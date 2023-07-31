@@ -3,12 +3,12 @@
 As of now this is an extremely early version of this AI assistance. I plan to add a variety of different features to this. Do note that I am still a student and I'm still learning programming so don't have high expectations. This is just a personal projects that I'm choosing to post online, any feedback will be greatly appreciated!
 
   ## **Features**
-Currently this project does not have many features but as time will come more features will be added.
-- 
-Long Term Memory
+**Currently this project does not have many features but as time will come more features will be added.**
+
+**Long Term Memory** -
   The AI saves all your past conversations into a JSON file, whenever the user mentions the word "remember" in their prompt to the AI, the entire message will be sent     to a sentence transformer model which will compare his prompt to previous ones, so for example if you mentioned to add milk to your shopping list because you are        running out, this will be saved to the JSON file, when you mention to the AI some along the lines of "Do you remember what I had on my shopping list?", the long term    memory script will run and it will compare this prompt to previous ones and the best match will be sent to the AI, allowing the illusion of a memory.
 
-Short Term Memory
+**Short Term Memory** - 
   The short term memory works in very similiar way as the long term one except instead of a sentence transofer model running and checking every single past                converstaion, the AI is given your entire chat history in the prompt with a limit of 4000 characters, the AI itself will have to read your converstaion and find the     best answer. This limit could be increased depening on the model you use but I can not test how well that would work as I do not have a good graphics card.
 
 
