@@ -4,7 +4,13 @@ As of now this is an extremely early version of this AI assistance. I plan to ad
 
   ## **Features**
 Currently this project does not have many features but as time will come more features will be added.
-Currently the only notable feature is "Short Term Memory". All the user inputted messages are stored into a JSON file, when the user inputs "remember" in the converstation the LTM.py program will run and will try to match the clostest prompt to the saved history, so if you talked to the AI about something specific for example "Do you remember what I put on my shopping list?" and if you told the AI prevously to add a specific item to the shopping list it will be able to tell you the item.
+- 
+Long Term Memory
+  The AI saves all your past conversations into a JSON file, whenever the user mentions the word "remember" in their prompt to the AI, the entire message will be sent     to a sentence transformer model which will compare his prompt to previous ones, so for example if you mentioned to add milk to your shopping list because you are        running out, this will be saved to the JSON file, when you mention to the AI some along the lines of "Do you remember what I had on my shopping list?", the long term    memory script will run and it will compare this prompt to previous ones and the best match will be sent to the AI, allowing the illusion of a memory.
+
+Short Term Memory
+  The short term memory works in very similiar way as the long term one except instead of a sentence transofer model running and checking every single past                converstaion, the AI is given your entire chat history in the prompt with a limit of 4000 characters, the AI itself will have to read your converstaion and find the     best answer. This limit could be increased depening on the model you use but I can not test how well that would work as I do not have a good graphics card.
+
 
   ## **Installation:**
 Note: As of the Version 0.1 the installation program is not created yet, so all the installations will have to be done manually and all the models and settings need to be modified manually. This will be different in future versions.
