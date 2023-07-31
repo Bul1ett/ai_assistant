@@ -7,6 +7,7 @@ from decimal import *
 
 if len(sys.argv) > 1:
     info = sys.argv[1]
+    prompt = sys.argv[2]
 
 sentences = [] #Raw Data
 
@@ -16,7 +17,7 @@ with open("memory/general_memory.jsonl", "r") as f:
             sentence = eval(line)
             sentences.append(sentence)
         except SyntaxError:
-            print("Syntax Error " + line)
+            print("\n" + line)
             pass
 
 model = SentenceTransformer('all-mpnet-base-v2') #Make sure to have the model downloaded that you want to use
@@ -35,7 +36,8 @@ closest_match = search_result_final.index(max(search_result_final))
 actual_message = sentences[closest_match][1]
 #Converts your json file into a list to make it easier to search, might be a bad way to convert the formats but it works
 
+
 def send_message(infor):
-    subprocess.run(["python", "Chat.py", info + " " + infor])
+    subprocess.run(["python", "Chat.py",prompt,info,infor ])
 
 send_message(str(actual_message))

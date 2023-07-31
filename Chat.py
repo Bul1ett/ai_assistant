@@ -31,8 +31,6 @@ async def run(user_input, history):
         'chat_generation_attempts': 1,
         'chat-instruct_command': 'You are an Assistant. Continue the chat dialogue below. Write a single reply for the character "<|character|>".\n\n<|prompt|>',
 
-        # Generation params. If 'preset' is set to different than 'None', the values
-        # in presets/preset-name.yaml are used instead of the individual numbers.
         'preset': 'None',
         'do_sample': True,
         'temperature': 0.7,
@@ -78,41 +76,48 @@ async def run(user_input, history):
 
 
 async def print_response_stream(user_input, history):
+    global ai_message
+    ai_message = ''
     cur_len = 0
     async for new_history in run(user_input, history):
         cur_message = new_history['visible'][-1][1][cur_len:]
         cur_len += len(cur_message)
         print(cur_message, end='')
-        sys.stdout.flush()  # If we don't flush, we won't see tokens in realtime.
+        ai_message += cur_message
+        #sys.stdout.flush()  # If we don't flush, we won't see tokens in realtime.
 
 def json_saving(new_data):
     with open("memory/general_memory.jsonl", "a") as file:
         file.write("\n" + new_data)
 
-def input_user(checked_information = ""):
+def short_term_memory_saving(save_data):
+    with open("memory/short_term_memory.jsonl", "a") as f:
+        f.write("\n" + str(save_data) )
+
+def input_user():
     global user_input
-    user_input = str("\nYou: " + checked_information)
+    user_input = str("\nMessage History: " + message_history + " " + closest_match_sentences + " Answer the user's prompt: " + user_prompt )
+
 
     seconds = time.time()
     local_time = time.ctime(seconds)
 
-    testing = [local_time, user_input]
+    testing = [local_time, user_prompt]
 
     json_saving(str(testing))
-    # Basic example
+
     history = {'internal': [], 'visible': []}
-
-    # "Continue" example. Make sure to set '_continue' to True above
-    # arr = [user_input, 'Surely, here is']
-    # history = {'internal': [arr], 'visible': [arr]}
-
     asyncio.run(print_response_stream(user_input, history))
 
+global closest_match_sentences
+global message_history
+
 if len(sys.argv) > 1:
-    information = sys.argv[1]
-    input_user(information)
+    user_prompt = sys.argv[1]
+    message_history = sys.argv[2]
+    closest_match_sentences = sys.argv[3]
+    input_user()
 else:
-    print("What have you done?")
+    print("You should never see this message.")
 
-
-
+short_term_memory_saving(["AI: " + ai_message, "User: " + user_prompt])
