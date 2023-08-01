@@ -17,7 +17,7 @@ with open("memory/general_memory.jsonl", "r") as f:
             sentence = eval(line)
             sentences.append(sentence)
         except SyntaxError:
-            print("\n" + line)
+            print("\n {line}")
             pass
 
 model = SentenceTransformer('all-mpnet-base-v2') #Make sure to have the model downloaded that you want to use

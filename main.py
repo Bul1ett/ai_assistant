@@ -40,8 +40,8 @@ def clearing_memory():
         with open("memory/short_term_memory.jsonl", "a") as files:
             for lines in short_term_memory_list:
                 try:
-                    files.write("\n" + str(lines) )
-                except:
+                    files.write("\n " + str(lines) )
+                except ValueError:
                     print("Error occurred during clearing_memory functions")
 
 def clean_memory():

@@ -96,7 +96,7 @@ def short_term_memory_saving(save_data):
 
 def input_user():
     global user_input
-    user_input = str("\nMessage History: " + message_history + " " + closest_match_sentences + " Answer the user's prompt: " + user_prompt )
+    user_input = str("\nMessage History: {message_history} , {closest_match_sentences} Answer the user's prompt: {user_prompt} ")
 
 
     seconds = time.time()
@@ -120,4 +120,4 @@ if len(sys.argv) > 1:
 else:
     print("You should never see this message.")
 
-short_term_memory_saving(["AI: " + ai_message, "User: " + user_prompt])
+short_term_memory_saving(["AI: {ai_message}", "User: {user_prompt}"])
