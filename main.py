@@ -4,10 +4,13 @@ import sys
 short_term_memory = []
 short_term_memory_list = []
 
+if len(sys.argv) > 1:
+    telegram_message = sys.argv[1]
+
 def chat_function():
     update_short_term_memory()
     clearing_memory()
-    User_Input = str(input("\n You: "))
+    User_Input = ("\n" + str(telegram_message) )
 
     if "remember" in User_Input.lower():
         memory(User_Input)
@@ -25,7 +28,6 @@ def update_short_term_memory():
                 sentence = eval(line)
                 short_term_memory.append(sentence)
             except SyntaxError:
-                print("\n " + line)
                 pass
 
 def clearing_memory():
@@ -49,7 +51,7 @@ def clean_memory():
         pass
 
 
-while True:
+if __name__ == "__main__":
     update_short_term_memory()
     clearing_memory()
     chat_function()

@@ -82,7 +82,6 @@ async def print_response_stream(user_input, history):
     async for new_history in run(user_input, history):
         cur_message = new_history['visible'][-1][1][cur_len:]
         cur_len += len(cur_message)
-        print(cur_message, end='')
         ai_message += cur_message
         #sys.stdout.flush()  # If we don't flush, we won't see tokens in realtime.
 
@@ -96,7 +95,7 @@ def short_term_memory_saving(save_data):
 
 def input_user():
     global user_input
-    user_input = str("\nMessage History: {message_history} , {closest_match_sentences} Answer the user's prompt: {user_prompt} ")
+    user_input = str(f"\nMessage History: {message_history} , {closest_match_sentences} Answer the user's prompt: {user_prompt} ")
 
 
     seconds = time.time()
@@ -105,7 +104,6 @@ def input_user():
     testing = [local_time, user_prompt]
 
     json_saving(str(testing))
-
     history = {'internal': [], 'visible': []}
     asyncio.run(print_response_stream(user_input, history))
 
@@ -120,4 +118,5 @@ if len(sys.argv) > 1:
 else:
     print("You should never see this message.")
 
-short_term_memory_saving(["AI: {ai_message}", "User: {user_prompt}"])
+print(f"{ai_message}")
+short_term_memory_saving(["AI: " + str(ai_message), "User: " + str(user_prompt)])
