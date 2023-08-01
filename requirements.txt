@@ -2,3 +2,5 @@ sentence_transformers
 torch
 requests
 websockets
+pytz
+python-telegram-bot
