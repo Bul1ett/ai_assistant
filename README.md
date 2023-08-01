@@ -1,6 +1,6 @@
   # **AI Assistant**
 
-As of now this is an extremely early version of this AI assistance. I plan to add a variety of different features to this. Do note that I am still a student and I'm still learning programming so don't have high expectations. This is just a personal projects that I'm choosing to post online, any feedback will be greatly appreciated!
+As of now this is an early version of this AI assistance. I plan to add a variety of different features to this. Do note that I am still a student and I'm still learning programming so don't have high expectations. This is just a personal projects that I'm choosing to post online, any feedback will be greatly appreciated!
 
   ## **Features**
 **Currently this project does not have many features but as time will come more features will be added.**
@@ -11,9 +11,12 @@ As of now this is an extremely early version of this AI assistance. I plan to ad
 **Short Term Memory** - 
   The short term memory works in very similiar way as the long term one except instead of a sentence transofer model running and checking every single past                converstaion, the AI is given your entire chat history in the prompt with a limit of 4000 characters, the AI itself will have to read your converstaion and find the     best answer. This limit could be increased depening on the model you use but I can not test how well that would work as I do not have a good graphics card.
 
+**Telegram Integration** -
+ You are now able to communicate with your AI remotly using Telegram! Before this you were forced to use your terminal to communicate and could not do it remotly, but    now you can. Currently I limited it so the AI can only talk to you in what ever chat you choose, so you can put it inside a group chat but it is not recommended.
+
 
 ## **Future Features:**
-  - Discord or other communication service integration
+  - ~~Discord or other communication service integration~~
   - Stable Diffusion or other image generation integration
   - Voice Communication
   - Ability to search the internet
@@ -26,6 +29,8 @@ Note: As of the Version 0.1 the installation program is not created yet, so all 
 
 1. Install [oobabooga text generation](https://github.com/oobabooga/text-generation-webui) and install any models you want. 
 2. Install a sentence transofermer model of your choice, by default the program will use [mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2). Put the model of your choice inside the same folder as this repo, and ensure that you choose the correct model on LTM.py ln(22)
-3. Ensure that you have a memories folder with the json file inside.
-4. Run the oobabooga webui with the -API parameter set enabled, choose the model you want using the webui
-5. Run the main.py and enjoy
+3. Ensure that you have the memories folder with two json files inside.
+4. Run the oobabooga webui with the -API parameter set, choose the model you want using the webui
+5. Ensure that you have a bot created in Telegram, if you do not just message @BotFather and get it setup
+6. Edit the telegram_main.py and change the "bot_token" and "user_chat_value" values. If you do not know your chat value just message the bot and it will be inside the terminal, but run the telegram_main.py first.
+7. After editing all values you are able to run the telegram_main.py and enjoy your conversations
